@@ -1,0 +1,52 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.cards{
+
+    &__grid{
+        @include m.tablet {
+            @include m.grid(3, 2rem);
+        }
+    }
+}
+
+.card{
+    max-width: 35rem;
+    margin-inline: auto;
+    margin-bottom: 2rem;
+
+    &:last-of-type{
+        margin-bottom: 0;
+    }
+    @include m.tablet {
+        max-width: unset;
+        margin: 0;
+    }
+    &__imagen{
+        width: 100%;
+        transition-property: scale rotate;
+        transition-duration: 300ms;
+        
+        &:hover{
+            border: .5rem solid v.$blanco;
+            transform: scale(1.2) rotate(4deg);
+        }
+    }
+
+    &__contenido{
+        max-width: 90%;
+        background-color: v.$blanco;
+        margin-inline: auto;
+        position: relative;
+        margin-top: -5rem;
+    }
+    &__heading{
+        @include m.headingCursiva;
+        padding: 2rem;
+        font-size: 3.4rem;
+    }
+    &__enlace{
+        @include m.boton(v.$secundario, v.$blanco);
+        display: block;
+    }
+}
